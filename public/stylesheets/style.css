@@ -1,0 +1,76 @@
+body {
+    
+    font-family: 'Kaushan Script' 'cursive';
+    padding-top:0px;
+    /* background-size:cover; */
+  }
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: rgba(238, 238, 238, 0.014);
+}
+.products-box{
+    min-height: 100vh;
+    height:auto;
+    
+   }
+   .vh-100{
+    margin-top: -30px;
+   }
+   .vh-100 h4{
+    font-size: 30px;
+    color: rgb(10, 9, 9);
+    font-family: cursive;
+    text-align: center;
+
+   }
+   .divider{
+    margin-left: -70px;
+   }
+   .text-center{
+    margin-left: -90px;
+   }
+   .my-4{
+    align-items: center;
+    text-align: center;
+    font-family: 'cursive';
+   }
+   .mb-4{
+    width: 80%;
+    
+   }
+   .btn-block{
+    width: 50%;
+
+   }
+
+   .text-center {
+    text-align: center!important;
+}
+.form-label{
+    padding: 0%;
+    font-family: cursive;
+}
+.nav-item,.nav-link{
+    margin-left: 5px;
+   
+}
+::marker{
+color: transparent;
+}
+.validerror{
+    color:red;
+    background-color: rgb(255,255,255);
+}
+label{
+    
+    width:160px;
+    
+   }
+/* .btn-block{
+    width: 30%;
+    padding-right: 20px;
+    
+} */

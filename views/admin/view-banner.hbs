@@ -1,0 +1,57 @@
+<section>
+    <div class="container">
+        <h1>All Banners</h1>
+        <div class="">
+            <a href="/admin/add-banner" class="btn btn-success my-4">Add Banner</a>
+        </div>
+        <table class="table mt-5 display" id="usersTable">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Caption</th>
+                    
+                    <th scope="col">Image</th>
+                    <th scope="col">Category</th>
+                    
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{#each banners}}
+                <tr>
+                    <td>{{this.title}} </td>
+                    <td>{{this.caption}} </td>
+                    <td>
+                        {{!-- {{#each productimage}}
+                        {{#if @first}} --}}
+                        <img width="50px" height="50px" src="/images/productimg/{{this.bannerimage}}" alt="">
+                        {{!-- {{/if}}
+                        {{/each}} --}}
+                         </td>
+                    <td>{{this.category}} </td>
+                    {{!-- <td>{{this.bannerimage}} </td> --}}
+                    <td>
+                        <a href="/admin/edit-banner/{{this._id}}" class="btn btn-primary mt-1">Edit</a>
+                        <a href="/admin/delete-banner/{{this._id}}" class="btn btn-danger mt-1"
+                            onclick="return confirm('Are you sure to delete {{this.Name}}?')">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#usersTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#usersTable').DataTable();
+</script>

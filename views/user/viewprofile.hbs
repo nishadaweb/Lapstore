@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/user-assets/css/profile.css">
+{{!-- <div id="breadcrumb" class="section"> --}}
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="breadcrumb-header text-center">My Account</h3>
+
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+	{{!--
+</div> --}}
+
+<div class="container">
+
+	<div class="main" style="margin-top: 30px;">
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="portlet light bordered">
+					<div class="portlet-title tabbable-line">
+						<div class="caption caption-md">
+							<i class="icon-globe theme-font hide"></i>
+							<span class="caption-subject font-blue-madison bold uppercase">Your info</span>
+						</div>
+					</div>
+					<div class="portlet-body">
+						<!-- Nav tabs -->
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="home">
+								<form>
+									<div class="form-group ">
+										<label for="inputName">First Name</label>
+										<input type="text" name="fname" class="form-control" id="inputName"
+											placeholder="Name" value="{{userData.fname}}">
+									</div>
+									<div class="form-group">
+										<label for="inputLastName">Last Name</label>
+										<input type="text" name="name" class="form-control" id="inputLastName"
+											placeholder="Last Name" value="{{userData.lname}}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email address</label>
+										<input type="email" name="email" class="form-control" id="exampleInputEmail1"
+											placeholder="Email" value="{{userData.email}}">
+									</div>
+									<a href="/edit-profile/{{this._id}}" class="btn btn-danger view-button "
+										type="button">Edit Profile</button></a>
+										<a href="/orders-list/{{this._id}}" class="btn btn-danger view-button "
+										type="button">My Orders</button></a>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="col-md-6 mb-3 p-0 ">
+				<div class="portlet light bordered">
+					<div class="portlet-title tabbable-line">
+						<div class="caption caption-md">
+							<i class="icon-globe theme-font hide"></i>
+							<span class="caption-subject font-blue-madison bold uppercase">Your Address</span>
+						</div>
+					</div>
+					<div class="row">
+						{{#each address}}
+						<div class="col-sm-4">
+							<div class="card">
+								<div class="card-body">
+									<input type="" hidden name="address" value="{{this._id}}" id="">
+									<h5 class="card-title">{{this.name}} <br>{{this.address}}</h5>
+									<p class="card-text">{{this.address1}}{{this.address2}}{{this.city}}
+										<br>{{this.state}}
+										<br>{{this.pinCode}} <br>{{this.mobile}}
+									</p>
+
+								</div>
+							</div>
+						</div>
+						{{/each}}
+					</div>
+					<div class="col mt-2">
+						<a href="/add-address/{{this._id}}" class="btn btn-danger view-button " type="button">Add
+							Address</button></a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	
+	

@@ -1,0 +1,38 @@
+{{!-- <h1>{{message}}</h1>
+<h2>{{error.status}}</h2>
+<pre>{{error.stack}}</pre> --}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<style>
+    body {
+    background: #dedede;
+}
+.page-wrap {
+    min-height: 100vh;
+}
+</style>
+
+
+<div class="page-wrap d-flex flex-row align-items-center" style="background-color: white;">
+    <div class="container">
+        <div class="row justify-content-center  ml-5 mb-5">
+            <div class="col-xl-12 text-center ">
+                <span class="display-1 d-block">404</span>
+                <h1>OOOOPSSSS!!!!!!</h1>
+                <h3>The page you are looking for was not found.</h3>
+                     
+                    <h2>{{error.status}}</h2>
+                    {{#if err.admin}}
+    <a href="/admin">Go TO Homepage</a>
+    {{else}}
+    <a href="/">Go TO Homepage</a>
+    {{/if}}
+                    
+             
+           
+            </div>
+        </div>
+    </div>
+</div>

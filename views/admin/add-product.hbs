@@ -1,0 +1,83 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<section>
+  <div class=" container row justify-content-center m-auto">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Add product</h2>
+      <form id="addproduct" action="/admin/add-product" method="post" enctype="multipart/form-data">
+       {{#if exist}}
+       
+       <script>
+            Swal.fire({
+  text: 'product already exist',
+  target: '#custom-target',
+  customClass: {
+    container: 'position-absolute'
+  },
+  toast: true,
+  position: 'center'
+})
+          </script>
+          {{/if}}
+        <label for="">Product Name</label>
+        <input type="text" name="productname" class="form-control" ><br>
+        <label for="">Product Description</label>
+        <input type="text" name="productdescription" class="form-control" ><br>
+        <label for="">Product Category</label>
+
+        <select type="select" name="productcategory" class="form-control" ><br>
+          {{#each categories}}
+          <option value="{{this.categoryname}}">{{this.categoryname}}</option>
+          {{/each}}
+        </select>
+        <label for="">Product Image</label>
+        <input type="file" name="productimage" class="form-control" ><br>
+        <label for="">Product Image</label>
+        <input type="file" name="productimage" class="form-control" ><br>
+        <label for="">Product Image</label>
+        <input type="file" name="productimage" class="form-control" ><br>
+        <label for="">Product Image</label>
+        <input type="file" name="productimage" class="form-control" ><br>
+        <label for="">Product Price</label>
+        <input type="text" name="productprice" class="form-control" ><br>
+        {{!-- <label for="">Topselling Product</label>
+        <input type="radio" name="Topselling Product" class="form-control" > --}}
+        
+        
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
+<script>
+
+  $("#addproduct").validate({
+    errorClass:"validerror",
+    rules: {
+      productname: {
+        required: true
+        
+      },
+      productdescription: {
+        required: true
+      },
+      productimage:{
+        required:true
+      },
+    productprice:{
+      required:true
+    },
+    productprice:{
+      required:true
+    },
+    productcategory:{
+      required:true
+    }
+    }
+  });
+</script>

@@ -1,0 +1,48 @@
+<section>
+  <div class=" container row  justify-content-center m-auto">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Edit Category</h2>
+      
+      {{!-- <input type="hidden" name="categoryid" value="{{categories._id}}" id="id"> --}}
+        
+      <form id="editcategory" action="/admin/edit-category" method="post" enctype="multipart/form-data" >
+      
+
+
+      <input type="text" name="id" class="invisible" value="{{categories._id}}" id="id"><br>
+        <label for="categoryname">Category Name</label>
+        
+        <input type="text" name="categoryname" class="form-control" value="{{categories.categoryname}}">
+
+        <label for="categorydescription">Category Description</label>
+        <input type="text" name="categorydescription" class="form-control" value="{{categories.categorydescription}}">
+        <label for="">Category Image</label>
+        <input type="file" name="categoryimage" class="form-control" value="{{categories.categoryimage}}" >
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
+<script>
+$("#editcategory").validate({
+    errorClass:"validerror",
+    rules: {
+      categoryname: {
+        required: true,
+        name: true
+      },
+      categorydescription: {
+        required: true
+      },
+      categoryimage: {
+        required:true
+      }
+    }
+  });
+</script>

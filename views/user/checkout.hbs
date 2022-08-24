@@ -1,0 +1,343 @@
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="breadcrumb-header">Checkout</h3>
+				
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+
+			<div class="col-md-7">
+				<!-- Billing Details -->
+				<div class="billing-details">
+					<div class="section-title">
+						<h3 class="title">Shipping address</h3>
+					</div>
+					<div>
+					<a href="/add-address/{{this._id}}" class="primary-btn order-submit" >Add Address</a>
+                    </div>
+					
+					<div class="col-md-4 mb-3 p-0">
+						<div class="row">
+							{{#each address}}
+							<label>
+							<input type="radio" name="address" value="{{this._id}}" id="" {{#if
+                                                @first}}checked{{/if}}> 
+							<div class="col-sm-12">
+								<div class="card">
+									<div class="card-body">
+										
+										
+										<h5 class="card-title">{{this.name}} <br>{{this.address}}</h5>
+										<p class="card-text">{{this.address1}}{{this.address2}}{{this.city}}
+											<br>{{this.state}}
+											<br>PIN:{{this.pinCode}} <br>{{this.mobile}}
+										</p>
+
+									</div>
+								</div>
+							</div>
+							</label>
+
+							{{/each}}
+							{{!-- <a href="/add-address/{{this._id}}" class="primary-btn order-submit" >Add Address</a> --}}
+						</div>
+					</div>
+					
+
+
+				</div>
+
+					</div>
+			
+			<div class="col-md-5 order-details">
+				<div class="section-title text-center">
+					<h3 class="title">Your Order</h3>
+				</div>
+				<div class="order-summary">
+					<div class="order-col">
+						<div><strong>PRODUCT</strong></div>
+						<div><strong>TOTAL</strong></div>
+					</div>
+				
+					<div class="order-products">{{#each cartProducts.cartItems}}
+						<div class="order-col">
+							<div>{{this.product.productname}}</div>
+							<div>Rs.{{total this.quantity
+                                this.product.productprice}}</div>
+						</div>{{/each}}
+						{{!-- <div class="order-col">
+							<div>2x Product Name Goes Here</div>
+							<div>$980.00</div>
+						</div>
+					</div> --}}
+					<div class="order-col">
+						<div>Sub Total</div>
+						<div><strong>Rs.{{subTotal cartProducts.cartItems }}</strong></div>
+					</div>
+					<div class="order-col" id="couponDiscount">
+						<div>Coupon Discount</div>
+						{{#if response.discount}}  
+						<div><strong> Rs.{{response.discount }}</strong></div>
+						{{else}}
+						<div><strong> 0</strong></div>
+                        {{/if}}
+					</div>
+					<div class="order-col">
+						<div>Shipping</div>
+						<div><strong>Rs.{{response.shipping}}</strong></div>
+					</div>
+
+					<div class="order-col">
+						<div><strong>TOTAL</strong></div>
+						<div><strong class="order-total" id="grandTotal">Rs.{{response.grandTotal}}</strong>
+						    </div>
+					</div>
+				</div>
+				<div class="payment-method">
+					<div class="input-radio ">
+						<input type="radio" name="payment" id="payment-1" value="COD" >
+						<label for="payment-1">
+							<span></span>
+							Cash On Delivery
+						</label>
+						<div class="caption">
+							<p>payment for a purchase is made directly by the purchaser to the person who delivers the item.</p>
+						</div>
+					</div>
+					<div class="input-radio">
+						<input type="radio" name="payment" id="payment-2" value="razorpay" checked>
+						<label for="payment-2">
+							<span></span>
+							Online Payment
+						</label>
+						<div class="caption">
+							<p>payment for a purchase is made by Razorpay.</p>
+						</div>
+					</div>
+					{{!-- <div class="input-radio">
+						<input type="radio" name="payment" id="payment-3">
+						<label for="payment-3">
+							<span></span>
+							Paypal System
+						</label>
+						<div class="caption">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua.</p>
+						</div>
+					</div> --}}
+				</div>
+				<div class="input-checkbox">
+					<input type="checkbox" id="terms">
+					<label for="terms">
+						<span></span>
+						I've read and accept the <a href="#">terms & conditions</a>
+					</label>
+				</div>
+				{{!-- <a href="#" class="primary-btn order-submit" >Place order</a> --}}
+				
+			
+			<button onclick="placeOrder()"  class="primary-btn order-submit" data-toggle="modal" data-target="#exampleModalCenter">
+  Place Order
+</button>
+{{!-- type="button" --}}
+<!-- Modal -->
+
+			</div>
+			<!-- /Order Details -->
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<!-- NEWSLETTER -->
+
+<!-- /NEWSLETTER -->
+<!-- FOOTER -->
+<footer id="footer">
+	<!-- top footer -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">About Us</h3>
+						{{!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+							ut.</p> --}}
+						<ul class="footer-links">
+							<li><a href="#"><i class="fa fa-map-marker"></i>1734 Kannur Road</a></li>
+							<li><a href="#"><i class="fa fa-phone"></i>+091-95-51-84-78</a></li>
+							<li><a href="#"><i class="fa fa-envelope-o"></i>lapstore@gmail.com</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+
+						<h3 class="footer-title">Categories</h3>
+							{{#each categories}}
+						<ul class="footer-links">
+							<li><a href="/AllProduct/{{this.categoryname}}">{{this.categoryname}}</a></li>
+							{{!-- <li><a href="#">Laptops</a></li> --}}
+						</ul>
+						{{/each}}
+					</div>
+				</div>
+
+				<div class="clearfix visible-xs"></div>
+
+				
+
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">Service</h3>
+						<ul class="footer-links">
+							<li><a href="/view-profile">My Account</a></li>
+							<li><a href="/view-cart">View Cart</a></li>
+							<li><a href="/wishlist">Wishlist</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /top footer -->
+
+	<!-- bottom footer -->
+	<div id="bottom-footer" class="section">
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12 text-center">
+				
+					<span class="copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+						is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+							target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</span>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /bottom footer -->
+</footer>
+
+
+
+
+
+<script>
+	
+    const razorPayment = (data) => {
+        var options = {
+            "key": "rzp_test_Z0xeXmUnmPCyQ0", // Enter the Key ID generated from the Dashboard
+            "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Acme Corp",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                verifyPayment(response, data);
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+		
+        rzp1.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+            verifyPayment(response, data);
+        });
+        rzp1.open();
+
+    }
+
+
+const placeOrder = async () => {
+        let paymentMethod = $('input[type="radio"][name="payment"]:checked').val()
+        let address = $('input[type="radio"][name="address"]:checked').val()
+        console.log(paymentMethod)
+        try {
+            const res = await axios.post('/place-Order', {
+                paymentMethod: paymentMethod,
+                address: address
+            }).then((e) => {
+                if (paymentMethod === "COD") {
+					console.log(e)
+					console.log('adfaldlf')
+					 location.href = `/order-success/${e.data.order._id}`;
+                } else {
+					console.log('alsdkfjlalsdfjldjf')
+                    
+                    razorPayment(e.data.data)
+					console.log(e.data.data)
+                }
+
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+	const verifyPayment = async (payment, order) => {
+        try {
+            const res = await axios.post('/verifyPayment', {
+                payment,
+                order
+            }).then((e) => {
+				console.log(e,+ "bsdhbsd")
+                if(e.data.status){
+                location.href = `/order-success/${order.receipt}`;
+                }else{
+                    alert('ooooopsss!!! failed to proceed');
+                }
+            })
+        } catch {
+
+        }
+    }
+	</script>
+	

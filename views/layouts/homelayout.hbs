@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>LAP STORE</title>
+		<link rel="icon" type="image/x-icon" href="/user-assets/img/laptop-circle-swoosh-icon-logo-260nw-336320570 (1).png" />
+
+ 		<!-- Google font -->
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		 <script src="https://kit.fontawesome.com/a981e1f704.js" crossorigin="anonymous"></script>
+
+ 		<!-- Bootstrap -->
+ 		<link type="text/css" rel="stylesheet" href="/user-assets/css/bootstrap.min.css"/>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="/user-assets/css/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="/user-assets/css/slick-theme.css"/>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/cart.css"/>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/wishlist.css"/>  
+
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="/user-assets/css/nouislider.min.css"/>
+
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="/user-assets/css/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="/user-assets/css/style.css"/>
+		<!-- razorpay -->
+		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="/admin-assets/js/config.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+    </head>
+	<body>
+	
+    {{>user-header}}
+	
+    {{{body}}}
+    
+		
+            <!-- jQuery Plugins -->
+		<script src="/user-assets/js/jquery.min.js"></script>
+		<script src="/user-assets/js/bootstrap.min.js"></script>
+		<script src="/user-assets/js/slick.min.js"></script>
+		<script src="/user-assets/js/nouislider.min.js"></script>
+		<script src="/user-assets/js/jquery.zoom.min.js"></script>
+		<script src="/user-assets/js/main.js"></script>
+		<script>
+	        const addToCart = async (id) => {
+		    console.log(id)
+		try {
+			const res = await axios.post(`/addToCart/${id}`, {
+			}).then((e) => {
+
+				console.log(e)
+				if(e.data.status){
+
+				
+				if (e.data.response.duplicate) {
+					swal.fire("Item already added to the cart")
+				} else {
+					let count = document.getElementById('cart-count').innerHTML
+					count = parseInt(count) + 1
+					document.getElementById('cart-count').innerHTML = count
+					swal.fire("Item added to the cart")
+
+				}
+				}else{
+					window.location.href="/login"
+				}
+			})
+		} catch (err) {
+			console.log(err)
+		}
+	}
+	const deleteW = () => {
+		window.location.reload()
+	}
+	const todo = async (id) => {
+		await addToCart(id)
+		deleteW()
+		console.log('gjghjgfhgfuyjyhfdgrfdg')
+	}
+</script>
+		
+</body>
+
+</html>

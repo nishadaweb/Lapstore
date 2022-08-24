@@ -1,0 +1,83 @@
+<section>
+    <div class="container">
+        <h1>All Orders</h1>
+
+        <table class="table mt-5 display" id="usersTable">
+            <thead>
+                <tr>
+                     <th width="10%" scope="col">User</th>
+                    <th width="10%" scope="col">Date</th>
+                   
+                    <th scope="col">Address</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">products</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Current Status</th>
+
+                    <th scope="col">Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {{#each orderdetails}}
+
+                <tr>
+                    <td>{{this.User.fname}}</td>
+                    <td>{{this.orderdDate}}</td>
+                    
+                    <td>{{this.paymentAddress.name}}<br>
+                        {{this.paymentAddress.address}}<br>
+                        {{this.paymentAddress.city}}<br>
+                        {{this.paymentAddress.state}}<br>
+                        {{this.paymentAddress.pinCode}}<br>
+                        {{this.paymentAddress.mobile}}
+                    </td>
+                    <td>Rs.{{this.totalPrice}}</td>
+
+
+                    <td>{{this.PaymentMethod}}</td>
+
+                   
+
+                    <td> {{#each this.orderItems}} {{this.product.productname}} <br>{{/each}}</td>
+                    <td>{{#each this.orderItems}} {{this.quantity}} <br>{{/each}}</td>
+                   
+                    <td>
+                        {{this.orderStatus}}
+                    </td>
+                    
+                    <td>
+                        <a href="/admin/orderstatus-shipped/{{this._id}}" class="btn btn-primary mb-2">Shipped</a>
+
+
+
+                        <a href="/admin/orderstatus-deliverd/{{this._id}}" class="btn btn-primary mb-2">Deliverd</a>
+
+
+                        <a href="/admin/orderstatus-arriving/{{this._id}}" class="btn btn-primary">Arriving</a>
+                    </td>
+
+                </tr>
+
+                {{/each}}
+
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#usersTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#usersTable').DataTable();
+</script>

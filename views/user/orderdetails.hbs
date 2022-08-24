@@ -1,0 +1,34 @@
+
+
+
+<div class="section">
+	<!-- container -->
+	<div class="container">
+
+<div class="row">
+    <!-- product -->
+    {{#each order.orderItems}}
+
+    <div class="col-md-3 col-xs-6">
+        <div class="product">
+            <div class="product-img">
+                <img src="/images/productimg/{{this.product.productimage.[0]}}" alt="">
+
+            </div>
+            <div class="product-body">
+                {{!-- <p class="product-category">Category</p> --}}
+                <h3 class="product-name"><a href="#">{{this.product.productname}}</a></h3>
+                <h4 class="product-price">Rs:{{this.product.productprice}} <del class="product-old-price"></del></h4>
+                <h4 class="product-price">Quantity-{{this.quantity}}</h4>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+    </div>
+    </div>

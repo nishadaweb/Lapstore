@@ -1,0 +1,139 @@
+<div id="top-header">
+	<div class="container">
+
+		<ul class="header-links pull-right">
+			{{!-- {{session}} --}}
+			{{#if session.userloggedIn}}
+			<li class="nav-item">
+				<a class="nav-link" href="/view-profile">
+					<i class="fa fa-user-o"></i>{{session.user.fname}}</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">
+					<i class="fa fa-user-o"></i> Log out</a>
+			</li>
+			{{else}}
+			<li class="nav-item">
+				<a class="nav-link" href="/register">
+					<i class="fa fa-user-o"></i> Sign up</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/login">
+					<i class="fa fa-user-o"></i> Log in</a>
+			</li>
+			{{/if}}
+		</ul>
+	</div>
+</div>
+<!-- /TOP HEADER -->
+
+<!-- MAIN HEADER -->
+<div id="header">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- LOGO -->
+			<div class="col-md-2">
+				<div class="header-logo">
+					<a href="#" class="logo">
+						<img class="img-responsive  col-xs-12" src="/user-assets/img/Capture.PNG" alt="">
+					</a>
+				</div>
+			</div>
+			<!-- /LOGO -->
+
+			<!-- SEARCH BAR -->
+			<div class="col-md-7">
+				<div class="header-search ">
+
+					<form  style="display:flex" action="/search" method="post" >
+						<select class="input-select">
+							<option value="0" hidden selected>All Categories</option>
+							{{#each categories}}
+
+							<option value="1"><a href="/AllProduct/{{this.categoryname}}">{{this.categoryname}}</a>
+							</option>
+
+							{{!-- <option value="1">Category 02</option> --}}
+							{{/each}}
+						</select>
+						
+						<input class="input" placeholder="Search here" name="productname">
+						<button type="submit" class="search-btn">Search</button>
+					</form>
+				</div>
+				{{#if message}}
+          <p class="error" style="color: rgb(78, 7, 19);">{{message}}</p>
+          {{/if}}
+			</div>
+			<!-- /SEARCH BAR -->
+
+			<!-- ACCOUNT -->
+			<div class="col-md-3 clearfix">
+				<div class="header-ctn ">
+					<!-- Wishlist -->
+					<div>
+						<a href="/wishlist">
+							<i class="fa fa-heart-o"></i>
+							<span>Your Wishlist</span>
+							<span class="qty" id="wishlist-count"></span>
+						</a>
+					</div>
+					<!-- /Wishlist -->
+
+					<!-- Cart -->
+					<div class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+							
+							<a href="/view-cart">
+								<i class="fa fa-shopping-cart"></i>
+
+								<span>Your Cart</span>
+								<span class="qty" id="cart-count"></span>
+							</a>
+
+					</div>
+					<div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Menu</span>
+									</a>
+								</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- /ACCOUNT -->
+</div>
+<!-- row -->
+</div>
+<!-- container -->
+</div>
+<!-- /MAIN HEADER -->
+<!-- NAVIGATION -->
+<nav id="navigation">
+	<!-- container -->
+	<div class="container">
+		<!-- responsive-nav -->
+		<div id="responsive-nav">
+			<!-- NAV -->
+			<ul class="main-nav nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/AllProducts">Products</a></li>
+				{{!-- <li><a href="#">Categories</a></li> --}}
+				{{!-- <li><a href="#">Laptops</a></li> --}}
+
+			</ul>
+			<!-- /NAV -->
+		</div>
+		<!-- /responsive-nav -->
+	</div>
+	<!-- /container -->
+</nav>
+<!-- /NAVIGATION -->
+</header>
+<!-- /HEADER -->
+<script src="/javascripts/cartCount.js"></script>

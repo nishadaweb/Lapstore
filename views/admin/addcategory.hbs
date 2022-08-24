@@ -1,0 +1,55 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<section>
+  <div class=" container row  justify-content-center m-auto">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Add category</h2>
+      <form id="addcategory" action="/admin/add-category" method="post" enctype="multipart/form-data">
+       {{#if exist}}
+       
+       <script>
+            Swal.fire({
+  text: 'category already exist',
+  target: '#custom-target',
+  customClass: {
+    container: 'position-absolute'
+  },
+  toast: true,
+  position: 'center'
+})
+          </script>
+          {{/if}}
+        <label for="">Category Name</label>
+        <input type="text" name="categoryname" class="form-control" ><br>
+        <label for="">Category Description</label>
+        <input type="text" name="categorydescription" class="form-control" ><br>
+        <label for="">Category Image</label>
+        <input type="file" name="categoryimage" class="form-control" ><br>
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
+<script>
+$("#addcategory").validate({
+    errorClass:"validerror",
+    rules: {
+      categoryname: {
+        required: true
+        
+      },
+      categorydescription: {
+        required: true
+        
+      },
+      categoryimage:{
+        required:true
+      }
+    }
+  });
+</script>

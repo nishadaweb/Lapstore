@@ -1,0 +1,59 @@
+<section>
+  <div class=" container row justify-content-center m-auto">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Edit Coupon</h2>
+      
+    
+        
+      <form id="editcoupon" action="/admin/edit-coupon" method="post" >
+      
+
+
+        <input type="text" name="id" class="invisible" value="{{coupon._id}}" id="id"><br>
+        <label for="title">Name</label>
+        
+        <input type="text" name="name" id="name" class="form-control" value="{{coupon.name}}"><br>
+
+        <label for="caption">Code</label><br>
+        <input type="text" name="code" id="code" class="form-control" value="{{coupon.code}}"><br>
+        
+        
+         
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" class="form-control" value="{{coupon.description}}"><br>
+       <label for="discount">Discount</label>
+        <input type="number" name="percentage" id="discount" class="form-control" value="{{coupon.discount}}"><br>
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+<script>
+  $("#editcoupon").validate({
+    errorClass:"validerror",
+    rules: {
+      name: {
+        required: true
+        
+      },
+      code: {
+        required: true
+        
+      },
+      description: {
+        required: true
+        
+      },
+      percentage: {
+        required: true
+        
+      },
+    }
+  });
+
+</script>

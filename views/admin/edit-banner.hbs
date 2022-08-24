@@ -1,0 +1,64 @@
+<section>
+  <div class=" container row justify-content-center m-auto">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Edit Banner</h2>
+      
+    
+        
+      <form id="editbanner" action="/admin/edit-banner" method="post" enctype="multipart/form-data">
+      
+
+
+        <input type="text" name="id" class="invisible" value="{{banner._id}}" id="id">
+        <label for="title">Title</label>
+        
+        <input type="text" name="title" class="form-control" value="{{banner.title}}">
+
+        <label for="caption">Caption</label><br>
+        <input type="text" name="caption" class="form-control" value="{{banner.caption}}">
+        
+        
+         <label for="category">Category</label><br>
+        <select type="select" name="category" class="form-control" >
+          {{#each categories}}
+          <option value="{{this.categoryname}}">{{this.categoryname}}</option>
+          {{/each}}
+        </select>
+        <label for="bannerimage">Banner Image</label>
+        <input type="file" name="bannerimage" class="form-control" value="{{banner.bannerimage}}"><br>
+       {{!-- <label for="productcategory">Product Category</label> --}}
+        {{!-- <input type="text" name="productcategory" class="form-control" value="{{products.productcategory}}"> --}}
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+<script>
+  $("#editbanner").validate({
+    errorClass:"validerror",
+    rules: {
+      title: {
+        required: true
+        
+      },
+      caption: {
+        required: true
+        
+      },
+      category: {
+        required: true
+        
+      },
+      bannerimage: {
+        required: true
+        
+      },
+    }
+  });
+
+</script>

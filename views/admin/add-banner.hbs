@@ -1,0 +1,72 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<section>
+  <div class=" container row justify-content-center m-auto">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Add banner</h2>
+      <form id="addbanner" action="/admin/add-banner" method="post" enctype="multipart/form-data">
+       {{#if exist}}
+       
+       <script>
+            Swal.fire({
+  text: 'Banner already exist',
+  target: '#custom-target',
+  customClass: {
+    container: 'position-absolute'
+  },
+  toast: true,
+  position: 'center'
+})
+          </script>
+          {{/if}}
+        <label for="">Title</label>
+        <input type="text" name="title" class="form-control" ><br>
+        <label for="">Caption</label>
+        <input type="text" name="caption" class="form-control" ><br>
+        <label for=""> Category</label>
+
+        <select type="select" name="category" class="form-control" >
+          {{#each categories}}
+          <option value="{{this.categoryname}}">{{this.categoryname}}</option>
+          {{/each}}
+        </select>
+        <label for="">Banner Image</label>
+        <input type="file" name="bannerimage" class="form-control" ><br>
+        
+        
+       
+        
+        
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+<script>
+  $("#addbanner").validate({
+    errorClass:"validerror",
+    rules: {
+      title: {
+        required: true
+        
+      },
+      caption: {
+        required: true
+        
+      },
+      category: {
+        required: true
+        
+      },
+      bannerimage: {
+        required: true
+        
+      },
+    }
+  });
+
+</script>

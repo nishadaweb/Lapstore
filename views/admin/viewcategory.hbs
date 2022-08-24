@@ -1,0 +1,47 @@
+<section>
+    <div class="container">
+        <h1>All Catagories</h1>
+        <div class="">
+            <a href="/admin/add-category" class="btn btn-success my-4">Add Catagory</a>
+        </div>
+        <table class="table mt-5 display" id="usersTable">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{#each categories}}
+                <tr>
+                    <td>{{this.categoryname}} </td>
+                    <td>{{this.categorydescription}} </td>
+                    <td><img width="50px" height="50px" src="/images/productimg/{{this.categoryimage}}" alt=""></td>
+
+                    <td>
+                        <a href="/admin/edit-category/{{this._id}}" class="btn btn-primary">Edit</a>
+                        <a href="/admin/delete-category/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you sure to delete {{this.Name}}?')">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#usersTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#usersTable').DataTable();
+</script>

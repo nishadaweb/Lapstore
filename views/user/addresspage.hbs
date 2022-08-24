@@ -1,0 +1,77 @@
+<div class="container">
+    <form id="addresspage" class=" mx-auto border p-3" action="/address" method="post">
+
+        <label>Name</label>
+        <div class="form-group">
+
+            <input class="input" type="text" name="name" id="name" placeholder="Name">
+        </div>
+        <label>Address</label>
+        <div><input class="input" type="text" name="address" id="address" placeholder="Address">
+        </div>
+        <label>City</label>
+        <div class="form-group">
+            <input class="input" type="text" name="city" id="city" placeholder="City">
+        </div>
+        <label>State</label>
+        <div class="form-group">
+            <input class="input" type="text" name="state" id="state" placeholder="Country">
+        </div>
+        <label>PIN Code</label>
+        <div class="form-group">
+            <input class="input" type="text" name="pinCode" id="pinCode" placeholder="PIN Code">
+        </div>
+        <label>Mobile</label>
+        <div class="form-group">
+            <input class="input" type="tel" name="mobile" id="mobile" placeholder="Mobile">
+        </div>
+        <div class="col mt-2">
+            <button class="btn btn-danger view-button " type="submit">Save
+                Address</button>
+            {{!-- <button type="submit">add</button> --}}
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+<script>
+    $("#addresspage").validate({
+        errorClass: "validerror",
+        rules: {
+
+            name: {
+                required: true
+
+            },
+            address: {
+                required: true
+
+            },
+            city: {
+                required: true
+
+
+            },
+            state: {
+                required: true
+                
+
+            },
+            pinCode: {
+                required: true,
+                minlength: 6
+
+            },
+
+            mobile: {
+                required: true,
+                minlength: 10,
+                maxlength: 10
+            }
+
+        }
+    });
+
+
+
+</script>

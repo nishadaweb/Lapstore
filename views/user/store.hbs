@@ -1,0 +1,244 @@
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- ASIDE -->
+			<div id="aside" class="col-md-3 ">
+				<!-- aside Widget -->
+				<div class="aside">
+
+					<h3 class="aside-title">Categories</h3>
+					{{#each categories}}
+					<h5><a href="/AllProduct/{{this.categoryname}}">{{this.categoryname}}</a>
+					</h5>
+
+
+					{{/each}}
+				</div>
+
+			</div>
+
+		</div>
+		<!-- /store top filter -->
+
+		<!-- store products -->
+		<div class="row">
+			<!-- product -->
+			{{#each Product}}
+
+			<div class="col-md-3 col-xs-6">
+				<div class="product">
+					<div class="product-img">
+						<img src="/images/productimg/{{productimage.[0]}}" alt="">
+
+					</div>
+					<div class="product-body">
+						{{!-- <p class="product-category">Category</p> --}}
+						<h3 class="product-name"><a href="#">{{this.productname}}</a></h3>
+						<h4 class="product-price">Rs:{{this.productprice}} <del class="product-old-price"></del></h4>
+
+						<div class="product-btns"> 
+							
+											<button onclick="addToWishList('{{this._id}}')"><i 
+													class="fa fa-heart-o" id="wishListIcon"></i><span class="tooltipp">add to
+													wishlist</span></button>
+							
+							   <a href="/view-singleproduct/{{this._id}}" class="quick-view"><i class="fa fa-eye"></i><span
+									class="tooltipp">quick view</span></a>
+						</div>
+					</div>
+					<div class="add-to-cart">
+						<button onclick="addToCart('{{this._id}}')" class="add-to-cart-btn"><i
+								class="fa fa-shopping-cart"></i> add to cart</button>
+					</div>
+				</div>
+			</div>
+			{{/each}}
+			<!-- /product -->
+
+
+			<!-- store bottom filter -->
+			
+			<!-- /store bottom filter -->
+		</div>
+		<!-- /STORE -->
+	</div>
+	<!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<!-- NEWSLETTER -->
+
+<!-- /NEWSLETTER -->
+<!-- FOOTER -->
+<footer id="footer">
+	<!-- top footer -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">About Us</h3>
+						{{!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+							ut.</p> --}}
+						<ul class="footer-links">
+							<li><a href="#"><i class="fa fa-map-marker"></i>1734 Kannur Road</a></li>
+							<li><a href="#"><i class="fa fa-phone"></i>+091-95-51-84-78</a></li>
+							<li><a href="#"><i class="fa fa-envelope-o"></i>lapstore@gmail.com</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+
+						<h3 class="footer-title">Categories</h3>
+							{{#each categories}}
+						<ul class="footer-links">
+							<li><a href="/AllProduct/{{this.categoryname}}">{{this.categoryname}}</a></li>
+							{{!-- <li><a href="#">Laptops</a></li> --}}
+						</ul>
+						{{/each}}
+					</div>
+				</div>
+
+				<div class="clearfix visible-xs"></div>
+
+				{{!-- <div class="col-md-3 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">Information</h3>
+						<ul class="footer-links">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Orders and Returns</a></li>
+							<li><a href="#">Terms & Conditions</a></li>
+						</ul>
+					</div>
+				</div> --}}
+
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">Service</h3>
+						<ul class="footer-links">
+							<li><a href="/view-profile">My Account</a></li>
+							<li><a href="/view-cart">View Cart</a></li>
+							<li><a href="/wishlist">Wishlist</a></li>
+							<li><a href="#">Track My Order</a></li>
+							<li><a href="#">Help</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /top footer -->
+
+	<!-- /top footer -->
+
+	<!-- bottom footer -->
+	<div id="bottom-footer" class="section">
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<span class="copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+						is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+							target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</span>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /bottom footer -->
+</footer>
+
+
+
+
+<script>
+	const addToCart = async (id) => {
+		console.log(id)
+		try {
+			const res = await axios.post(`/addToCart/${id}`, {
+			}).then((e) => {
+
+				console.log(e)
+				if (e.data.response.duplicate) {
+					swal.fire("Item already added to the cart")
+				} else {
+					let count = document.getElementById('cart-count').innerHTML
+					count = parseInt(count) + 1
+					document.getElementById('cart-count').innerHTML = count
+					swal.fire("Item added to the cart")
+
+				}
+			})
+		} catch (err) {
+			console.log(err)
+		}
+	}
+	const deleteW = () => {
+		window.location.reload()
+	}
+	const todo = async (id) => {
+		await addToCart(id)
+		deleteW()
+		console.log('gjghjgfhgfuyjyhfdgrfdg')
+	}
+</script>
+<script>
+	const addToWishList = async (id) => {
+		const res = await axios.post(`/addToWishList/${id}`, {
+		}).then((e) => {
+			if (e.data.response.cart) {
+				swal.fire("Item already added to the wishlist")
+			} else {
+				if (e.data.response.added) {
+					swal.fire("Item  added to the wishlist")
+					let count = document.getElementById('wishlist-count').innerHTML
+					count = parseInt(count) + 1
+					document.getElementById('wishlist-count').innerHTML = count
+					document.getElementById('wishListIcon').style.color = '#a9a9a9'
+				} else {
+					swal.fire("Item  removed from the wishlist")
+					let count = document.getElementById('wishlist-count').innerHTML
+					count = parseInt(count) - 1
+					document.getElementById('wishlist-count').innerHTML = count
+					document.getElementById('wishListIcon').style.color = '#FF0000'
+				}
+			}
+
+		})
+	}
+	let product = document.getElementById('product-id').value
+	document.product = product
+	document.addEventListener('DOMContentLoaded', myWishlist, false)
+	async function myWishlist(evt) {
+
+		const res = await axios.get(`/checkWishlist/${evt.currentTarget.product}`, {}).then((e) => {
+			console.log(e.data.wishList)
+			if (e.data.wishList) {
+				document.getElementById('wishListIcon').style.color = '#a9a9a9'
+			} else {
+				document.getElementById('wishListIcon').style.color = '#FF0000'
+			}
+		})
+	}
+
+</script>

@@ -1,0 +1,210 @@
+{{#if response.notEmpty}}
+
+<div class="container-fluid pt-5 " >
+    <div class="row px-xl-5 ">
+        <div class="col-lg-8 table-responsive mb-5 ">
+            <div class="main-heading mb-10 text-center  mx-auto">My Wishlist</div>
+            
+            <table class="table table-bordered text-center text-dark mb-0">
+                <thead class="text-center text-dark" style=" background-color: #ef233">
+                    <tr>
+                        <th>Product</th>
+                        <th>Productname</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    {{#each wishListItems}}
+                    <tr>
+                        <td class="align-middle">
+                            {{#each this.product.productimage}}
+                            {{#if @first}}
+                            <img src="/images/productimg/{{this}}" alt="" style="width: 50px;">
+                            {{/if}}
+                            {{/each}}
+
+                        </td>
+                        <td> {{this.product.productname}}</td>
+
+                        <td class="align-middle" id="{{this.product._id}}price">{{this.product.productprice}}
+
+                        </td>
+
+                        <td class="align-middle"> <button class="btn btn-sm btn-danger"
+                                onclick="removeWishListItem('{{this.product._id}}')" class="trash-icon"><i
+                                    class="fa fa-times"></i></button>
+                        </td>
+
+                        <td>
+                            <div class="add-to-cart">
+
+
+                                <button onclick="addToCart('{{product._id}}')" class="add-to-cart-btn"><i
+                                        class="fa fa-shopping-cart"></i> add to cart</button>
+
+                            </div>
+                        </td>
+
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+        {{else}}
+        <div class="ml-auto align-items-center">
+            {{!-- style="height: auto;text-align: center; transform: translateY(300%);"> --}}
+            <div style="transform: translateY(200%);"><div style="transform: translateX(41%);"><h4>Your Wishlist is empty!!!</h4><div></div>
+        </div>
+        {{/if}}
+
+        <script>
+            const addToCart = async (id) => {
+                console.log(id)
+                try {
+                    const res = await axios.post(`/addToCart/${id}`, {
+                    }).then((e) => {
+
+                        console.log(e)
+                        if (e.data.response.duplicate) {
+                            swal.fire("Item already added to the cart")
+                        } else {
+                            let count = document.getElementById('cart-count').innerHTML
+                            count = parseInt(count) + 1
+                            document.getElementById('cart-count').innerHTML = count
+                            swal.fire("Item added to the cart")
+
+                        }
+                    })
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+            const deleteW = () => {
+                window.location.reload()
+            }
+            const todo = async (id) => {
+                await addToCart(id)
+                deleteW()
+                console.log('gjghjgfhgfuyjyhfdgrfdg')
+            }
+        </script>
+        <script>
+            const addToWishList = async (id) => {
+                const res = await axios.post(`/addToWishList/${id}`, {
+                }).then((e) => {
+                    
+                    if (e.data.response.cart) {
+                        swal.fire("Item already added to the wishlist")
+                    } else {
+                        if (e.data.response.added) {
+                            let count = document.getElementById('wishlist-count').innerHTML
+                            count = parseInt(count) + 1
+                            document.getElementById('wishlist-count').innerHTML = count
+                            document.getElementById('wishListIcon').style.color = '#FF0000'
+                        } else {
+                            let count = document.getElementById('wishlist-count').innerHTML
+                            count = parseInt(count) - 1
+                            document.getElementById('wishlist-count').innerHTML = count
+                            document.getElementById('wishListIcon').style.color = '#a9a9a9'
+                        }
+                    }
+                    
+
+                })
+            }
+            let product = document.getElementById('product-id').value
+            document.product = product
+            document.addEventListener('DOMContentLoaded', myWishlist, false)
+            async function myWishlist(evt) {
+
+                const res = await axios.get(`/checkWishlist/${evt.currentTarget.product}`, {}).then((e) => {
+                    console.log(e.data.wishList)
+                    if (e.data.wishList) {
+                        document.getElementById('wishListIcon').style.color = '#FF0000'
+                    } else {
+                        document.getElementById('wishListIcon').style.color = '#a9a9a9'
+                    }
+                })
+            }
+
+        </script>
+        <script>
+            const removeWishListItem = async (id) => {
+                try {
+                    const res = await axios.post(`/removeWishListItem/${id}`, {}).then((e) => {
+                        console.log(e.data.response)
+                        
+                        window.location.reload()
+
+                    })
+                } catch (err) {
+                    console.error(err.data.response)
+                }
+            }
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+        {{!-- <div class="cart-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 row">
+                        <div class="main-heading mb-10 text-center mx-auto">My Wishlist</div> --}}
+                        {{!-- {{#if response.notEmpty}} --}}
+                        {{!-- <div class="table-wishlist">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th width="45%">Product</th>
+                                        <th width="15%">Productname</th>
+                                        <th width="15%">Unit Price</th>
+                                        <th width="10%">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody> --}}
+                                    {{!-- {{#each wishListItems}}
+                                    <tr>
+                                        <td width="45%">
+                                            <div class="display-flex align-center">
+                                                <div class="img-product">
+                                                    <img src="/images/productimg/{{this.product._id}}" alt=""
+                                                        class="mCS_img_loaded">
+                                                </div>
+                                                <div class="name-product">{{this.product.productname}}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="15%" class="price">Rs.{{this.product.productprice}}</td>
+                                        <td width="15%"><button class="round-black-btn small-btn"
+                                                onclick="todo('{{this.product._id}}')">Add to Cart</button></td>
+                                        <td width="10%" class="text-center"><button
+                                                onclick="removeWishListItem('{{this.product._id}}')"
+                                                class="trash-icon"><i class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div> --}}
+                        {{!-- {{else}} --}}
+                        {{!-- <div class="ml-auto align-items-center"
+                            style="height: auto;text-align: center; transform: translateY(300%);">
+                            <span style="margin-left: auto;">Your Wish List Is Empty</span>
+                        </div> --}}
+                        {{!-- {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div> --}}

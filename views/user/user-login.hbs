@@ -1,0 +1,120 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="stylesheets/sign.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+  <div id="login">
+    <h3 class="text-center text-dark pt-5"> <img src="/user-assets/img/Capture.PNG" style="margin-left:90px" alt=""></h3>
+    
+    <div class="container">
+      <div id="login-row" class="row d-flex justify-content-center align-items-center">
+        <div id="login-column" class="col-md-4">
+          <div id="login-box" class="col-md-12">
+            <form id="userlogin" action="/login" method="post">
+              <div class="row">
+                <div class="col-auto mx-auto">
+                  <h3 class="text-dark">Login</h3>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="username" class="text-dark">Email Address:</label><br>
+                <input type="text" name="email" id="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="password" class="text-dark">Password:</label><br>
+                <input type="password" name="password" id="password" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="remember-me" class="text-dark"><span>Remember me</span> <span><input id="remember-me"
+                      name="remember-me" type="checkbox"></span></label><br>
+                {{#if loginerr}}
+                <p class="text-danger">{{loginerr}}</p>
+                {{/if}}
+                {{#if err}}
+                <p class="text-danger">{{err}}</p>
+                {{/if}}
+
+                <input type="submit" name="submit" class="btn btn-danger mx-auto col-3 " value="Log in">
+              </div>
+
+
+
+            </form>
+            <div class="row">
+              <div class="col-auto mx-auto">
+                OR
+            
+              </div>
+            </div>
+            <div class="row">
+              
+                <p class="text-dark col-auto mx-auto">Login with OTP</p>
+              
+            </div>
+
+
+            <form id="loginotp" action="/loginotp" method="post">
+              <div class="form-group">
+                <label for="username" class="text-dark">Enter mobile number</label>
+                <input type="text" name="mobile" id="mobile" class="form-control">
+              </div>
+
+              <div id="register-link" class=" d-flex justify-content-between">
+                <input type="submit" name="submit" class="btn btn-danger col-3 mb-2" value="Get otp">
+                <a href="/register" class="text-dark">Register here</a>
+              </div>
+            </form>
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
+
+  <script>
+
+    $("#userlogin").validate({
+      errorClass: "validerror",
+      rules: {
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 6
+        }
+      }
+    });
+
+
+
+
+  </script>
+  <script>
+    $("#loginotp").validate({
+      rules: {
+        mobile: {
+          required: true
+
+        }
+      }
+    })
+  </script>
+
+
+</body>

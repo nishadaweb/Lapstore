@@ -1,0 +1,48 @@
+<section>
+    <div class="container">
+        <h1>All Users</h1>
+        
+        <table class="table mt-5 display" id="usersTable">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Status</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{#each userdetails}}
+                <tr>
+                    <td>{{this.fname}} {{this.lname}}</td>
+                    <td>{{this.email}} </td>
+                    <td>{{this.mobile}} </td>
+                    {{#if this.status}}
+                    <td>
+                        <a href="/admin/block-user/{{this._id}}" class="btn btn-primary"onclick="return confirm('Are you sure to unblock {{this.Name}}?')">Unblock</a></td>
+                        {{else}}
+                        <td>
+                        <a href="/admin/block-user/{{this._id}}" class="btn btn-primary"onclick="return confirm('Are you sure to block {{this.Name}}?')">Block</a>
+                        </td>
+                        {{/if}}
+                        </tr>
+                 {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#usersTable').wrap('<div id="hide" style="display:none" class="mt-5"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#usersTable').DataTable();
+</script>

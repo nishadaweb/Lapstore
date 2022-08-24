@@ -1,0 +1,158 @@
+<section>
+    <div class="container">
+        <div id="invoice">
+
+            <div class="mb-5">
+                {{!-- <h1>REPORT</h1> --}}
+                <button id="invoice" onclick="generatePDF()"><i class="fa fa-download" aria-hidden="true">
+                </button></i>
+            </div>
+
+
+
+
+
+            <table class="table mt-5 display" id="usersTable">
+
+
+                <thead>
+                    <h3>Delivered Orders</h3>
+                    <tr>
+
+                        <th width="10%" scope="col">Users</th>
+                        <th width="10%" scope="col">Date</th>
+                        <th scope="col">Orderd Product</th>
+                        <th scope="col">Quantity</th>
+
+
+                        <th scope="col">Total Amount</th>
+
+
+
+                        <th scope="col">PaymentMethod </th>
+
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {{#each deliverdOrder}}
+
+                    <tr>
+                        <td>{{this.User.fname}}</td>
+                        <td>{{this.orderdDate}}</td>
+                        <td> {{#each this.orderItems}} {{this.product.productname}} <br>{{/each}}</td>
+                        <td>{{#each this.orderItems}} {{this.quantity}} <br>{{/each}}</td>
+
+
+                        <td>Rs.{{this.totalPrice}}</td>
+
+
+                        <td>{{this.PaymentMethod}}</td>
+
+                    </tr>
+
+                    {{/each}}
+
+
+                </tbody>
+            </table>
+             <table class="table mt-5 display" id="usersTable">
+            
+            
+            <thead>
+                <h3>Sales Report</h3>
+                <h5>1.COD Sales</h5>
+                <tr>
+                    
+                       
+                        <th scope="col">Date</th>
+                        
+                        <th scope="col">Total COD Amount </th>
+                        
+
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                
+
+                {{#each codsales}}
+
+                <tr>
+                    
+                    <td>{{this._id}}</td>
+                    <td>Rs.{{this.total}}</td>
+                </tr>
+
+                {{/each}}
+
+
+            </tbody>
+        </table>
+        <table class="table mt-5 display" id="usersTable">
+            
+            
+            <thead>
+                <h5>2.ONLINE Sales</h5>
+                
+                <tr>
+                    
+                       
+                        <th scope="col">Date</th>
+                        
+                        <th scope="col">Total Online Amount </th>
+                        
+
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {{log onlinesales}}
+
+                {{#each onlinesales}}
+
+                <tr>
+                    
+                    <td>{{this._id}}</td>
+                    <td>Rs.{{this.total}}</td>
+                </tr>
+
+                {{/each}}
+
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#usersTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#usersTable').DataTable();
+</script>
+
+<script>
+    function generatePDF() {
+        const element = document.getElementById('invoice');
+        html2pdf()
+            .from(element)
+            .save();
+
+    }
+</script>
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.min.js"></script>

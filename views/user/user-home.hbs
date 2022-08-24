@@ -1,0 +1,283 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+
+
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+
+
+				<div class="carousel-inner" role="listbox">
+					{{#each Banner}}
+
+
+					<div class="item {{#if @first}}active{{/if}} ">
+
+						<img src="/images/productimg/{{this.bannerimage}} " alt="...">
+						<div class="carousel-caption">
+
+						</div>
+					</div>
+					{{/each}}
+
+
+
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container ">
+		<!-- row -->
+		<div class="row ">
+			
+			<!-- shop -->
+				{{#each categories}}
+			<div class="col-md-4 col-xs-6">
+				<div class="shop">
+					<div class="shop-img">
+						
+						<img src="/images/productimg/{{this.categoryimage}}" alt="">
+					</div>
+					<div class="shop-body">
+						<h3>{{this.categoryname}}</h3>
+						<h5 class="cta-btn" ><a href="/AllProduct/{{this.categoryname}}">shop Now<i class="fa fa-arrow-circle-right"></i></a>
+							</h5>
+						
+						
+					</div>
+				</div>
+			</div>
+			{{/each}}
+
+		</div>
+			
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+
+			<!-- section title -->
+			<div class="col-md-12">
+				<div class="section-title">
+					<h3 class="title">New Products</h3>
+					
+				</div>
+			</div>
+			<!-- /section title -->
+
+			<!-- Products tab & slick -->
+			<div class="col-md-12">
+				<div class="row">
+
+					<div class="products-tabs">
+						<!-- tab -->
+						<div id="tab1" class="tab-pane active">
+							<div class="products-slick" data-nav="#slick-nav-1">
+								<!-- product -->
+								{{#each Product}}
+								<div class="product">
+									<div class="product-img ">
+										<img src="/images/productimg/{{productimage.[0]}}" alt="">
+									</div>
+									<div class="product-body">
+										{{!-- <p class="product-category">Category</p> --}}
+										<h3 class="product-name"><a href="#">{{this.productname}}</a></h3>
+										<h4 class="product-price">Rs:{{this.productprice}}<del
+												class="product-old-price"></del>
+										</h4>
+
+										<div class="product-btns ">
+											<button onclick="addToWishList('{{this._id}}')"><i 
+													class="fa fa-heart-o" id="wishListIcon"></i><span class="tooltipp">add to
+													wishlist</span></button>
+											<a href="/view-singleproduct/{{this._id}}" class="quick-view"><i
+													class="fa fa-eye"></i><span class="tooltipp">quick view</span></a>
+										</div>
+									</div>
+                                    
+									<div class="add-to-cart">
+										<button onclick="addToCart('{{this._id}}')" class="add-to-cart-btn"><i
+												class="fa fa-shopping-cart"></i> add to cart</button>
+												
+									</div>
+								</div>
+								{{/each}}
+
+							</div>
+							<div id="slick-nav-1" class="products-slick-nav"></div>
+						</div>
+						<!-- /tab -->
+					</div>
+				</div>
+			</div>
+			<!-- Products tab & slick -->
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+
+			
+
+<!-- NEWSLETTER -->
+
+<!-- /NEWSLETTER -->
+<!-- FOOTER -->
+<footer id="footer">
+	<!-- top footer -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">About Us</h3>
+						{{!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+							ut.</p> --}}
+						<ul class="footer-links">
+							<li><a href="#"><i class="fa fa-map-marker"></i>1734 Kannur Road</a></li>
+							<li><a href="#"><i class="fa fa-phone"></i>+091-95-51-84-78</a></li>
+							<li><a href="#"><i class="fa fa-envelope-o"></i>lapstore@gmail.com</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+
+						<h3 class="footer-title">Categories</h3>
+							{{#each categories}}
+						<ul class="footer-links">
+							<li><a href="/AllProduct/{{this.categoryname}}">{{this.categoryname}}</a></li>
+							{{!-- <li><a href="#">Laptops</a></li> --}}
+						</ul>
+						{{/each}}
+					</div>
+				</div>
+
+				<div class="clearfix visible-xs"></div>
+
+				
+
+				<div class="col-md-4 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-title">Service</h3>
+						<ul class="footer-links">
+							<li><a href="/view-profile">My Account</a></li>
+							<li><a href="/view-cart">View Cart</a></li>
+							<li><a href="/wishlist">Wishlist</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /top footer -->
+
+	<!-- bottom footer -->
+	<div id="bottom-footer" class="section">
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12 text-center">
+				
+					<span class="copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+						is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+							target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</span>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /bottom footer -->
+</footer>
+
+
+
+<script>
+	const addToWishList = async (id) => {
+		const res = await axios.post(`/addToWishList/${id}`, {
+		}).then((e) => {
+			 if(e.data.status){
+			if (e.data.response.cart) {
+				swal.fire("Item already added to the wishlist")
+			} else {
+				if (e.data.response.added) {
+					swal.fire("Item  added to the wishlist")
+					let count = document.getElementById('wishlist-count').innerHTML
+					count = parseInt(count) + 1
+					document.getElementById('wishlist-count').innerHTML = count
+					document.getElementById('wishListIcon').style.color = '#D10024'
+				} else {
+					
+					let count = document.getElementById('wishlist-count').innerHTML
+					count = parseInt(count) - 1
+					document.getElementById('wishlist-count').innerHTML = count
+					document.getElementById('wishListIcon').style.color = '#FF0000'
+				}
+			}
+			 }
+                    else{
+                       window.location.href="/login" 
+                    }
+
+		})
+	}
+	let product = document.getElementById('product-id').value
+	document.product = product
+	document.addEventListener('DOMContentLoaded', myWishlist, false)
+	async function myWishlist(evt) {
+
+		const res = await axios.get(`/checkWishlist/${evt.currentTarget.product}`, {}).then((e) => {
+			console.log(e.data.wishList)
+			if (e.data.wishList) {
+				document.getElementById('wishListIcon').style.color = '#a9a9a9'
+			} else {
+				document.getElementById('wishListIcon').style.color = '#FF0000'
+			}
+		})
+	}
+
+</script>
