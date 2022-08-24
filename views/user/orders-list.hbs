@@ -5,17 +5,17 @@
       {{#if orders}}
       <div class="table-responsive">
         <table class="table" id="orderTable" >
-          <thead class="headt text-center" style="background-color: white; color: black;">
+          <thead class=" text-center" style="background-color: white; color: black;">
             <tr>
-              <th scope="col" >Date</th>
-              <th scope="col">products</th>
+              <th class="text-center" scope="col" >Date</th>
+              <th class="text-center" scope="col">products</th>
 
               
-              <th scope="col">Total Amount</th>
+              <th class="text-center" scope="col">Total Amount</th>
 
 
-              <th scope="col">Payment</th>
-              <th scope="col">Status</th>
+              <th class="text-center" scope="col">Payment</th>
+              <th class="text-center" scope="col">Status</th>
               
               <th></th>
 
@@ -25,7 +25,7 @@
           <tbody>
             {{#each orders}}
 
-            <tr class="text-left" ondblclick="location.href='/orderDetails/{{this._id}}'" >
+            <tr class="text-center" ondblclick="location.href='/orderDetails/{{this._id}}'" >
               <td>{{this.orderdDate}}</td>
               <td>
                 {{#each this.orderItems}}
@@ -57,12 +57,15 @@
                 {{#if (eq this.orderStatus 'cancelled')}}
                 <a href="" class="btn btn-danger">Cancelled</a>
                 {{else}}
+                {{#if (eq this.orderStatus 'delivered')}}
+                {{else}}
                 <a href="/Cancel-order/{{this._id}}" class="btn btn-danger"
                   onclick="return confirm('Are you sure to cancel {{this.Name}}?')">
                   Cancel
                   </a>
               </td>
 
+              {{/if}}
               {{/if}}
               </td>
 
