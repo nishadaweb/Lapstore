@@ -88,7 +88,7 @@ router.get('/add-category',verify,(req,res)=>{
   res.render('admin/addcategory',{exist,layout:'adminlayout'})
 })
 
-router.post('/add-category', multer.upload.single('categoryimage'),(req,res)=>{
+router.post('/add-category',verify, multer.upload.single('categoryimage'),(req,res)=>{
   let image = req.file.filename
   adminHelpers.addCategory(req.body,image).then((response)=>{
       console.log(response)
@@ -119,7 +119,7 @@ router.get('/edit-category/:id',verify, async (req, res,next) => {
   
 })
 
-router.post('/edit-category',multer.upload.single('categoryimage'),(req, res) => {
+router.post('/edit-category',verify,multer.upload.single('categoryimage'),(req, res) => {
   let image = req.file.filename
   adminHelpers.editCategory(req.body,image).then(() => {
     res.redirect('/admin/view-category')
@@ -143,7 +143,7 @@ router.get('/view-users',verify, function (req, res, next) {
   )
 });
 
-router.get('/block-user/:id', (req, res) => {
+router.get('/block-user/:id',verify, (req, res) => {
   let usrId = req.params.id;
   adminHelpers.blockUser(usrId).then((response) => {
     res.redirect('/admin/view-users')
@@ -172,7 +172,7 @@ router.get('/add-product',verify,async(req,res,next)=>{
   }
 })
 
-router.post('/add-product',multer.upload.array('productimage',4),(req,res)=>{
+router.post('/add-product', verify,multer.upload.array('productimage',4),(req,res)=>{
   let images=[]
   files=req.files
   images=files.map((value)=>{
@@ -210,7 +210,7 @@ router.get('/edit-product/:id',verify, async (req, res,next) => {
  
 })
 
-router.post('/edit-product', multer.upload.array('productimage',4),(req, res) => {
+router.post('/edit-product',verify, multer.upload.array('productimage',4),(req, res) => {
   let images=[]
   files=req.files
   images=files.map((value)=>{
