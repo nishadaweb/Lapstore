@@ -1,28 +1,36 @@
 <section class="vh-100 pt-5">
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100 ">
-      
+
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <form id="adminlogin" action="/admin/login" method="post">
           <h4 class="text-dark text-center my-4">Admin Login</h4>
           <!-- Email input -->
           <div class="form-outline mb-2">
-            <div class="d-flex"><div> <label class="form-label mb-0" for="form1Example13">Email address&nbsp;  </label></div>
-            <div>            
-              <input type="email" id="form1Example13" name="email" class="form-control form-control-lg " style="height: 30px;"  /></div>
+            <div class="d-flex">
+              <div> <label class="form-label mb-0" for="form1Example13">Email address&nbsp; </label></div>
+              <div>
+                <input type="email" id="form1Example13" name="email" class="form-control form-control-lg "
+                  style="height: 30px;" />
               </div>
-           </div>
-          
+            </div>
+          </div>
+
 
           <!-- Password input -->
           <div class="form-outline mb-2">
-            <div class="d-flex"><div> <label class="form-label mb-0 " for="form1Example3">Password&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </label></div><div>            <input type="password" id="form1Example3" name="password" class="form-control form-control-lg " style="height: 30px;"  /></div></div>
-           </div>
-          
+            <div class="d-flex">
+              <div> <label class="form-label mb-0 " for="form1Example3">Password&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                </label></div>
+              <div> <input type="password" id="form1Example3" name="password" class="form-control form-control-lg "
+                  style="height: 30px;" /></div>
+            </div>
+          </div>
 
-          
 
-          {{#if adminLoggErr}}
+
+
+          {{#if logerr}}
           <p class="text-danger">Invalid email or password</p>
           {{/if}}
 
@@ -36,18 +44,21 @@
     </div>
   </div>
 </section>
-{{!-- <script>
-$("#adminlogin").validate({
-    errorClass:"validerror",
-    rules: {
-      email: {
-        required: true,
-        email: true
-      },
-      password: {
-        required: true
-        
+<script>
+
+    $("#adminlogin").validate({
+      errorClass: "validerror",
+      rules: {
+        email: {
+          required: true
+          
+        },
+        password: {
+          required: true
+
+        }
       }
-    }
-  });
-  </script> --}}
+    });
+  
+
+</script>

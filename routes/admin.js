@@ -51,8 +51,9 @@ router.get('/adminlogin',function(req,res){
  res.redirect('/admin')
   }
   else{
-    res.render('admin/admin-login', { adminLoggErr: req.session.adminLoggErr })
-    req.session.adminLoggErr = false;
+    let logerr=req.session.adminLoggErr
+    req.session.adminLoggErr = null;
+    res.render('admin/admin-login', { logerr })
   }
 
 })
