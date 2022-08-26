@@ -175,6 +175,7 @@ router.get('/add-product',verify,async(req,res,next)=>{
 router.post('/add-product', verify,multer.upload.array('productimage',4),(req,res)=>{
   let images=[]
   files=req.files
+  console.log(files)
   images=files.map((value)=>{
     return value.filename
   })
@@ -195,14 +196,13 @@ router.post('/add-product', verify,multer.upload.array('productimage',4),(req,re
 
 router.get('/edit-product/:id',verify, async (req, res,next) => {
   try{
-    if (req.session.adminLoggedIn) {
+    
       let products = await adminHelpers.getProduct(req.params.id)
       let categories=await category.find({}).lean()
       res.render('admin/edit-product', {products,layout:'adminlayout',categories})
-      } else {
-      res.redirect('/admin');
-    }
+     
   }catch(err){
+    console.log(err)
     res.status(404)
     err.admin=true;
     next(err)
@@ -210,9 +210,12 @@ router.get('/edit-product/:id',verify, async (req, res,next) => {
  
 })
 
-router.post('/edit-product',verify, multer.upload.array('productimage',4),(req, res) => {
+router.post('/edit-product',verify,multer.upload.array('productimage',4),(req, res) => {
+  
+  console.log(req.files)
   let images=[]
   files=req.files
+  console.log(files)
   images=files.map((value)=>{
     return value.filename
   })

@@ -190,10 +190,12 @@ getProduct:(id)=>{
 editProduct:(details,image)=>{
     return new Promise((resolve,response)=>{
         let productimage =image
-
+        console.log(details.id)
         productModel.findByIdAndUpdate(details.id,{productname:details.productname, productdescription:details.productdescription,productimage:productimage,productprice:details.productprice,productcategory:details.productcategory}).then((data)=>{
             console.log(data)
             resolve(data)
+        }).catch((err)=>{
+            console.log(err)
         })
     })
 },
