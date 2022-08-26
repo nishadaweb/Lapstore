@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const adminModel = require('../models/adminModel');
-const categoryModel = require('../models/categoryModel')
-const userModel = require('../models/userModel')
-const productModel = require('../models/productModel');
-const bannerModel = require('../models/bannerModel');
-const coupenModel = require('../models/coupenModel');
-const orderModel = require('../models/orderModel');
+const adminModel = require('../Models/adminModel');
+const categoryModel = require('../Models/categoryModel')
+const userModel = require('../Models/userModel')
+const productModel = require('../Models/productModel');
+const bannerModel = require('../Models/bannerModel');
+const coupenModel = require('../Models/coupenModel');
+const orderModel = require('../Models/orderModel');
 
 
     

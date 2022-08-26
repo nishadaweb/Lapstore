@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose')
-const User = require('../models/userModel');
+const User = require('../Models/userModel');
 const userHelpers=require('../helpers/user-helpers')
 const adminHelpers=require('../helpers/admin-helpers')
 const auth=require('../helpers/auth')
-const Products=require('../models/productModel');
-const category = require('../models/categoryModel');
-const banner = require('../models/bannerModel');
-const cart = require('../models/cartModel');
-const address = require('../models/addressModel')
+const Products=require('../Models/productModel');
+const category = require('../Models/categoryModel');
+const banner = require('../Models/bannerModel');
+const cart = require('../Models/cartModel');
+const address = require('../Models/addressModel')
 const { Router } = require('express');
 
 

@@ -1,11 +1,11 @@
 const express = require('express');
 const async = require('hbs/lib/async');
 const router = express.Router();
-const Admin = require('../models/adminModel');
+const Admin = require('../Models/adminModel');
 const adminHelpers=require('../helpers/admin-helpers');
 const { response } = require('express');
 const multer=require('../helpers/multer')
-const category = require('../models/categoryModel');
+const category = require('../Models/categoryModel');
 
 
 

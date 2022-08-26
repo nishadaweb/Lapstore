@@ -1,14 +1,14 @@
 const async = require('hbs/lib/async');
 const { reject } = require('bcrypt/promises')
-const User = require('../models/userModel');
+const User = require('../Models/userModel');
 const bcrypt = require('bcrypt');
 var moment = require('moment');
-const cartModel = require('../models/cartModel');
-const wishlistModel = require('../models/wishlistModel');
-const addressModel = require('../models/addressModel')
-const coupenModel = require('../models/coupenModel');
-const productModel = require('../models/productModel');
-const orderModel = require('../models/orderModel');
+const cartModel = require('../Models/cartModel');
+const wishlistModel = require('../Models/wishlistModel');
+const addressModel = require('../Models/addressModel')
+const coupenModel = require('../Models/coupenModel');
+const productModel = require('../Models/productModel');
+const orderModel = require('../Models/orderModel');
 var moment = require('moment')
 const Razorpay = require('razorpay');
 
