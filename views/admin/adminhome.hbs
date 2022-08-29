@@ -232,7 +232,7 @@
             var yValues = [];
 
             result.map((curr) => {
-                xValues.push(curr.orderdDate)
+                xValues.unshift(curr.orderdDate)
                 yValues.unshift(parseInt(curr.totalPrice))
 
             })
