@@ -5,6 +5,7 @@
         <table class="table mt-5 display" id="usersTable">
             <thead>
                 <tr>
+                    <th width="10%" scope="col">SI NO</th>
                      <th width="10%" scope="col">User</th>
                     <th width="10%" scope="col">Date</th>
                    
@@ -24,6 +25,7 @@
                 {{#each orderdetails}}
 
                 <tr>
+                    <td>{{@index}}</td>
                     <td>{{this.User.fname}}</td>
                     <td>{{this.orderdDate}}</td>
                     
