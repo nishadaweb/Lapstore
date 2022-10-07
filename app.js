@@ -37,6 +37,10 @@ app.engine('hbs', hbs.engine({ extname: 'hbs',defaultLayout: "layout", layoutsDi
   },
   eq:function(data,value){
     return data === value
+  },
+  gt:function(address){
+    let length=address.length;
+    return(length>0);
   }
   
 } 

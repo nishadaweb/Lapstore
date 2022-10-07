@@ -34,6 +34,7 @@
 					
 					<div class="col-md-4 mb-3 p-0">
 						<div class="row">
+							{{#if (gt address)}}
 							{{#each address}}
 							<label>
 							<input type="radio" name="address" value="{{this._id}}" id="" {{#if
@@ -55,6 +56,9 @@
 							</label>
 
 							{{/each}}
+							{{else}}
+							<p class="text-danger">Please add an address</p>
+							{{/if}}
 							{{!-- <a href="/add-address/{{this._id}}" class="primary-btn order-submit" >Add Address</a> --}}
 						</div>
 					</div>
@@ -151,10 +155,22 @@
 				</div>
 				{{!-- <a href="#" class="primary-btn order-submit" >Place order</a> --}}
 				
-			
-			<button onclick="placeOrder()"  class="primary-btn order-submit" data-toggle="modal" data-target="#exampleModalCenter">
+				{{#if (gt address)}}
+				<button onclick="placeOrder()"  class="primary-btn order-submit" data-toggle="modal" data-target="#exampleModalCenter">
   Place Order
 </button>
+                {{else}}
+
+				
+			
+			<button onclick="placeOrder()" disabled class="primary-btn order-submit" style="opacity: .5;" data-toggle="modal" data-target="#exampleModalCenter">
+  Place Order
+</button>
+{{/if}}
+			
+			{{!-- <button onclick="placeOrder()"  class="primary-btn order-submit" data-toggle="modal" data-target="#exampleModalCenter">
+  Place Order
+</button> --}}
 {{!-- type="button" --}}
 <!-- Modal -->
 

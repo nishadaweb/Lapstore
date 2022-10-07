@@ -27,5 +27,17 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishadaweb/Lapstore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishadaweb/Lapstore/issues"
+  },
+  "homepage": "https://github.com/nishadaweb/Lapstore#readme",
+  "description": ""
 }
