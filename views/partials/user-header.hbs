@@ -121,7 +121,7 @@
 		<div id="responsive-nav">
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a  href="/AllProducts">Products</a></li>
 				<li><a href="/orders-list">My Orders</a></li>
 				{{!-- <li><a href="#">Laptops</a></li> --}}
@@ -137,3 +137,12 @@
 </header>
 <!-- /HEADER -->
 <script src="/javascripts/cartCount.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var url = window.location;
+        $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+        $('ul.nav a').filter(function() {
+             return this.href == url;
+        }).parent().addClass('active');
+    });
+</script> 
